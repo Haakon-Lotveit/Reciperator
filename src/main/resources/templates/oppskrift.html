@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="'Oppskrift: ' + ${recipe.name} + '!'">Oppskrift
+	- Navn ikke funnet</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Biff og Fløtegratinerte poteter</h1>
+	<p id="infoline"
+		th:text="'Vanskelighetsgrad: ' + ${recipe.difficulty} + ' - Tid: ' + ${recipe.time} + ' - Porsjoner: ' + ${recipe.portions}">
+		Vanskelighetsgrad: [[[Vanskelighetsgrad]]] - Tid: [[[Tid]]]-
+		Porsjoner: [[[Porsjoner]]]</p>
+
+	<div id="ingredienser">
+		<div class="ingrediensliste" th:each="ig : ${recipe.ingredientGroups}">
+			<h2 th:text="${ig.name}">test</h2>
+			<ul>
+				<li th:each="ingredient : ${ig.ingredients}"
+					th:text="${ingredient.ingredient}">ingrediensfail</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="instrukser">
+		<div class="instruks" th:each="ig : ${recipe.instructionGroups}">
+			<h2 th:text="${ig.name}">instruksnavn</h2>
+			<ul>
+				<li th:each="instruction : ${ig.instructions}"
+					th:text="${instruction.instruction}">instruks</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
